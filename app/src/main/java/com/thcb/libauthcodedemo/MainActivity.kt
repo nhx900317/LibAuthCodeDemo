@@ -27,17 +27,17 @@ class MainActivity : Activity() {
 
         mAuthCodeAb = AuthCode(this)
         mAuthCodeAb?.checkAuthCode(
-                "88e8a57c58d7ea088e1b32881338aaab",
-                object : AuthCodeAb.AuthCodeCallback {
-                    override fun onError(code: Int, msg: String) {
-                        LogDebug.d(TAG, "checkAuthCode onError,code:$code,msg:$msg")
-                        tvMsg!!.text = msg
-                    }
+            "88e8a57c58d7ea088e1b32881338aaab",
+            object : AuthCodeAb.AuthCodeCallback {
+                override fun onError(code: Int, msg: String) {
+                    LogDebug.d(TAG, "checkAuthCode onError,code:$code,msg:$msg")
+                    tvMsg!!.text = msg
+                }
 
-                    override fun onSuccess(msg: String) {
-                        LogDebug.d(TAG, "checkAuthCode onSuccess,msg:$msg")
-                        tvMsg!!.text = msg
-                    }
-                })
+                override fun onSuccess(msg: String) {
+                    LogDebug.d(TAG, "checkAuthCode onSuccess,msg:$msg")
+                    tvMsg!!.text = msg
+                }
+            })
     }
 }
