@@ -26,6 +26,7 @@ class MainActivity : Activity() {
         tvMsg = findViewById(R.id.tv_msg)
 
         mAuthCodeAb = AuthCode(this)
+        LogDebug.d(TAG, "getVersion:" + mAuthCodeAb?.getVersion())
         mAuthCodeAb?.checkAuthCode(
             "88e8a57c58d7ea088e1b32881338aaab",
             "com.thcb.libauthcodedemo",
