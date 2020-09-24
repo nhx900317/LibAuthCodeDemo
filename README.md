@@ -5,6 +5,7 @@
 版本|修改记录 |修改时间|修改人
 -------|-------|-------|-------
 1.0|创建文档|2020-09-23|天河归来
+1.1|验证码接口增加设备id参数|2020-09-24|天河归来
 
 # 1. 配置和使用方法<br>
 
@@ -51,16 +52,17 @@ Demo分别展示了aar中的各项功能使用和调用方法。<br>
     mAuthCodeAb = AuthCode(this)
     
 调用AuthCodeAb的checkAuthCode方法验证：
-abstract fun checkAuthCode(authCode: String, pAuthCodeCallback: AuthCodeCallback)
+abstract fun checkAuthCode(authCode: String, deviceId:String, pAuthCodeCallback: AuthCodeCallback)
 参数名称|参数说明
 -------|-------
 authCode|验证码
+deviceId|设备Id
 pAuthCodeCallback|验证结果回调，AuthCodeAb.AuthCodeCallback
 
 具体使用方法：<br>
 在使用定位的Activity实现LocationAb.LocationCallback接口，或者在使用时创建LocationAb.LocationCallback，以下示例代码使用传入回调方式：<br>
 
-    mAuthCodeAb?.checkAuthCode("88e8a57c58d7ea088e1b32881338aaab",object : AuthCodeAb.AuthCodeCallback {
+    mAuthCodeAb?.checkAuthCode("88e8a57c58d7ea088e1b32881338aaab", "your device Id", object : AuthCodeAb.AuthCodeCallback {
         override fun onError(code: Int, msg: String) {
             LogDebug.d(TAG, "checkAuthCode onError,code:$code,msg:$msg")
             tvMsg!!.text = msg
