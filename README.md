@@ -5,7 +5,7 @@
 版本|修改记录 |修改时间|修改人
 -------|-------|-------|-------
 1.0|创建文档|2020-09-23|天河归来
-1.1|验证码接口增加设备id参数|2020-09-24|天河归来
+1.1|增加查询aar版本号的接口<br>验证码接口增加设备id参数|2020-09-24|天河归来
 
 # 1. 配置和使用方法<br>
 
@@ -41,16 +41,22 @@ Demo分别展示了aar中的各项功能使用和调用方法。<br>
 
 注：初始化操作必不可少，否则无法使用本aar库，传入的context建议使用应用Application的context。此操作建议在Application中完成。<br>
 
-# 3. 验证功能<br>
-使用验证码在服务器进行验证。
+# 3. 具体方法<br>
+使用AuthCodeAb类进行具体操作，其中封装的方法如下。
 
-## 3.1 使用方法<br>
+## 3.1 AuthCodeAb对象初始化<br>
 新建AuthCodeAb对象，并初始化：
 
     private var mAuthCodeAb: AuthCodeAb? = null
     
-    mAuthCodeAb = AuthCode(this)
+    mAuthCodeAb = AuthCode(this)//传入上下文content
     
+## 3.2 查询版本号方法<br>
+调用AuthCodeAb的getVersion方法查询aar的版本号：
+abstract fun getVersion():String
+返回aar的版本号。
+
+## 3.2 验证码验证方法<br>
 调用AuthCodeAb的checkAuthCode方法验证：
 abstract fun checkAuthCode(authCode: String, deviceId:String, pAuthCodeCallback: AuthCodeCallback)
 参数名称|参数说明
@@ -76,16 +82,16 @@ pAuthCodeCallback|验证结果回调，AuthCodeAb.AuthCodeCallback
     
 注：如不用传入回调实现接口方式，可以使用Activity实现接口代替。<br>
 
-## 3.2 回调方法<br>
+## 3.4 回调方法<br>
 验证码结果回调方法
-### 3.2.1  验证通过回调<br>
+### 3.4.1  验证通过回调<br>
 验证码验证成功时回调
 fun onSuccess(msg: String)<br>
 参数名称|参数说明
 -------|-------
 msg|操作成功
 
-### 3.2.2  验证失败回调<br>
+### 3.4.2  验证失败回调<br>
 验证码验证失败时回调。<br>
 注：失败情况比如：验证码不存在，验证码已过期，联网超时等，具体看code和msg。<br>
 onError(code: Int, msg: String)<br>
