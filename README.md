@@ -4,8 +4,8 @@
 # 修改记录<br>
 版本|修改记录 |修改时间|修改人
 -------|-------|-------|-------
-1.0|创建文档|2020-09-23|天河归来
-1.1|增加查询aar版本号的接口<br>验证码接口增加设备id参数|2020-09-24|天河归来
+1.0|创建文档<br>aar版本号：1.0|2020-09-23|天河归来
+1.1|增加查询aar版本号的接口，aar版本号：1.1<br>验证码接口增加设备id参数|2020-09-24|天河归来
 
 # 1. 配置和使用方法<br>
 
@@ -42,28 +42,28 @@ Demo分别展示了aar中的各项功能使用和调用方法。<br>
 注：初始化操作必不可少，否则无法使用本aar库，传入的context建议使用应用Application的context。此操作建议在Application中完成。<br>
 
 # 3. 具体方法<br>
-使用AuthCodeAb类进行具体操作，其中封装的方法如下。
+使用AuthCodeAb类进行具体操作，其中封装的方法如下。<br>
 
 ## 3.1 AuthCodeAb对象初始化<br>
-新建AuthCodeAb对象，并初始化：
+新建AuthCodeAb对象，并初始化：<br>
 
     private var mAuthCodeAb: AuthCodeAb? = null
     
     mAuthCodeAb = AuthCode(this)//传入上下文content
     
 ## 3.2 查询版本号方法<br>
-调用AuthCodeAb的getVersion方法查询aar的版本号：
-abstract fun getVersion():String
-返回aar的版本号。
+调用AuthCodeAb的getVersion方法查询aar的版本号：<br>
+abstract fun getVersion():String<br>
+返回aar的版本号。<br>
 
 ## 3.2 验证码验证方法<br>
-调用AuthCodeAb的checkAuthCode方法验证：
-abstract fun checkAuthCode(authCode: String, deviceId:String, pAuthCodeCallback: AuthCodeCallback)
+调用AuthCodeAb的checkAuthCode方法验证：<br>
+abstract fun checkAuthCode(authCode: String, deviceId:String, pAuthCodeCallback: AuthCodeCallback)<br>
 参数名称|参数说明
 -------|-------
 authCode|验证码
 deviceId|设备Id
-pAuthCodeCallback|验证结果回调，AuthCodeAb.AuthCodeCallback
+pAuthCodeCallback|验证结果回调，AuthCodeAb.AuthCodeCallback<br>
 
 具体使用方法：<br>
 在使用定位的Activity实现LocationAb.LocationCallback接口，或者在使用时创建LocationAb.LocationCallback，以下示例代码使用传入回调方式：<br>
