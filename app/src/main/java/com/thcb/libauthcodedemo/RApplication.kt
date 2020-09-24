@@ -12,7 +12,7 @@ import com.thcb.libauthcode.utils.LogDebug
  * 描述：RApplication
  */
 
-class RApplication:Application() {
+class RApplication : Application() {
     private val TAG = "RApplication"
 
     companion object {

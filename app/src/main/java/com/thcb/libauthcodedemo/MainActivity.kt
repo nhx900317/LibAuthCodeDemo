@@ -28,6 +28,7 @@ class MainActivity : Activity() {
         mAuthCodeAb = AuthCode(this)
         mAuthCodeAb?.checkAuthCode(
             "88e8a57c58d7ea088e1b32881338aaab",
+            "com.thcb.libauthcodedemo",
             object : AuthCodeAb.AuthCodeCallback {
                 override fun onError(code: Int, msg: String) {
                     LogDebug.d(TAG, "checkAuthCode onError,code:$code,msg:$msg")
